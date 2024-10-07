@@ -1,0 +1,47 @@
+/* src/components/CSS/ProductList.css */
+
+ul {
+    list-style-type: none; /* Remove as marcas da lista */
+    padding: 0; /* Remove o preenchimento */
+    margin: 20px 0; /* Margem superior e inferior */
+}
+
+li {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    justify-content: space-between; /* Espaço entre os elementos */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 10px; /* Adiciona preenchimento */
+    border: 1px solid #ddd; /* Borda ao redor dos itens */
+    border-radius: 5px; /* Cantos arredondados */
+    margin-bottom: 10px; /* Espaço entre os itens */
+    background-color: #f9f9f9; /* Fundo claro */
+    transition: background-color 0.3s; /* Efeito de transição ao passar o mouse */
+}
+
+li:hover {
+    background-color: #f1f1f1; /* Fundo escuro ao passar o mouse */
+}
+
+button {
+    background-color: #ff4d4d; /* Fundo vermelho */
+    color: white; /* Texto branco */
+    border: none; /* Remove a borda */
+    padding: 5px 10px; /* Preenchimento */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.3s; /* Efeito de transição */
+}
+
+button:hover {
+    background-color: #ff1a1a; /* Escurece o fundo ao passar o mouse */
+}
+
+a {
+    color: #007bff; /* Cor azul */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-right: 10px; /* Espaço à direita do link */
+}
+
+a:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
