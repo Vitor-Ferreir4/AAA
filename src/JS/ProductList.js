@@ -7,8 +7,13 @@ const ProductList = ({ fetchProducts }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);
+        const loadProducts = async () => {
+            const response = await axios.get('http://localhost:5000/api/products');
+            setProducts(response.data);
+        };
+
+        loadProducts();
+    }, []); // Chama apenas uma vez ao montar o componente
 
     const deleteProduct = async (id) => {
         await axios.delete(`http://localhost:5000/api/products/${id}`);
@@ -17,13 +22,17 @@ const ProductList = ({ fetchProducts }) => {
 
     return (
         <ul>
-            {products.map(product => (
-                <li key={product.id}>
-                    {product.name} - ${product.price}
-                    <Link to={`/edit/${product.id}`}> Editar</Link> {/* Link para editar */}
-                    <button onClick={() => deleteProduct(product.id)}>Deletar</button>
-                </li>
-            ))}
+            {products.length === 0 ? (
+                <li>Nenhum produto encontrado.</li>
+            ) : (
+                products.map(product => (
+                    <li key={product.id}>
+                        {product.name} - ${product.price}
+                        <Link to={`/edit/${product.id}`}> Editar</Link>
+                        <button onClick={() => deleteProduct(product.id)}>Deletar</button>
+                    </li>
+                ))
+            )}
         </ul>
     );
 };

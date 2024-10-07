@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const EditProduct = ({ fetchProducts }) => {
-  const { id } = useParams(); // Pega o ID do produto a ser editado
+  const {id} = useParams(); // Pega o ID do produto a ser editado
   const navigate = useNavigate(); // Para redirecionar após a edição
 
   const [name, setName] = useState('');
@@ -13,7 +13,7 @@ const EditProduct = ({ fetchProducts }) => {
   useEffect(() => {
     // Busca o produto pelo ID ao carregar a página
     const fetchProduct = async () => {
-      const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+      const response = await axios.get(`http://localhost:5000/api/products/1`);
       const { nome_produto, preco, descricao } = response.data;
       setName(nome_produto);
       setPrice(preco);
@@ -21,11 +21,11 @@ const EditProduct = ({ fetchProducts }) => {
     };
 
     fetchProduct();
-  }, [id]);
+  }, [1]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:5000/api/products/${id}`, { name, price, description });
+    await axios.put(`http://localhost:5000/api/products/1`, { name, price, description });
     fetchProducts(); // Atualiza a lista de produtos
     navigate('/Lista'); // Redireciona para a página de lista de produtos
   };
